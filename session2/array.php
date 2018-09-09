@@ -67,8 +67,53 @@
 				'phone' => '0905...'
 			)
 		);
-	var_dump($arrMyClass);
+	//var_dump($arrMyClass);
 	// 1. Nhu Y - 20 tuoi - Nu - 0988...
 	// 2. Tuan - 21 tuoi - Nam - 0934...
 	// 3. Tai - 23 tuoi - Nam - 0905...
+	// Them ban Vuong, 25 tuoi, Nam, 0978... vao danh sach lop
+	// Doi so dien thoai cua ban Nhu Y la 0168...
+	// Xoa ban Tai khoi danh sach lop
+	echo "<br/>----------------<br/>";
+	function changeGenderVi($gender){
+		return $gender == 'male'?"Nam":"Nu";
+		// if ($gender == 'male') {
+		// 	return "Nam";
+		// }else {
+		// 	return "Nu";
+		// }
+	}
+	function listClass($arrMyClass) {
+		$i = 1;
+		foreach ($arrMyClass as $key => $value) {
+			echo $i.' - '.$value['name'].' - '.$value['age'].' tuoi'.' - '.changeGenderVi($value['gender']).' - '.$value['phone'];
+			echo "<br>";
+			$i++;
+		}
+	}
+	listClass($arrMyClass);
+	// 1 - Nhy y - 20 tuoi - female - 0988...
+	// 2 - Tuan - 21 tuoi - male - 0934...
+	// 3 - Tai - 23 tuoi - male - 0905...
+	$arrNewMember = array(
+		'vuong'=> array(
+				'name' => 'Vuong',
+				'age'  => 25,
+				'gender' => 'male',
+				'phone' => '0978...'
+			)
+		);
+	$arrNewClass = array_merge($arrMyClass, $arrNewMember);
+	//var_dump($arrNewClass);
+	echo "<br/>----------------<br/>";
+	listClass($arrNewClass);
+	echo $arrNewClass['nhuy']['phone'];
+	$arrNewClass['nhuy']['phone'] = '0168...';
+	echo "<br/>----------------<br/>";
+	listClass($arrNewClass);
+
+	
+	unset($arrNewClass['tai']);
+	echo "<br/>----------------<br/>";
+	listClass($arrNewClass);
 ?>
