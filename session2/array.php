@@ -47,6 +47,7 @@
 	array_push($myClass,'Tuan');
 	array_push($myClass, 'Tai');
 	var_dump($myClass);
+	//Danh sach lop hoc
 	$arrMyClass = array(
 		'nhuy' => array(
 				'name' => 'Nhy y',
@@ -75,6 +76,7 @@
 	// Doi so dien thoai cua ban Nhu Y la 0168...
 	// Xoa ban Tai khoi danh sach lop
 	echo "<br/>----------------<br/>";
+	// Doi gioi tinh tu tieng Anh sang tieng Viet
 	function changeGenderVi($gender){
 		return $gender == 'male'?"Nam":"Nu";
 		// if ($gender == 'male') {
@@ -83,6 +85,7 @@
 		// 	return "Nu";
 		// }
 	}
+	// List danh sach lop hoc
 	function listClass($arrMyClass) {
 		$i = 1;
 		foreach ($arrMyClass as $key => $value) {
@@ -91,10 +94,12 @@
 			$i++;
 		}
 	}
+	// Goi de hien thi danh sach lop hoc
 	listClass($arrMyClass);
 	// 1 - Nhy y - 20 tuoi - female - 0988...
 	// 2 - Tuan - 21 tuoi - male - 0934...
 	// 3 - Tai - 23 tuoi - male - 0905...
+	//Thong tin cua ban Vuong
 	$arrNewMember = array(
 		'vuong'=> array(
 				'name' => 'Vuong',
@@ -103,17 +108,24 @@
 				'phone' => '0978...'
 			)
 		);
+	// Them ban Vuong vao lop hoc
 	$arrNewClass = array_merge($arrMyClass, $arrNewMember);
 	//var_dump($arrNewClass);
 	echo "<br/>----------------<br/>";
+	// List danh sach lop hoc sau khi them ban Vuong vao
 	listClass($arrNewClass);
+	// Xem so dien thoai hien tai cua ban Nhu Y
 	echo $arrNewClass['nhuy']['phone'];
+    // Doi so dien thoai cua ban Nhu Y
 	$arrNewClass['nhuy']['phone'] = '0168...';
 	echo "<br/>----------------<br/>";
+	// List lai danh sach lop sau khi doi so dien thoai
 	listClass($arrNewClass);
 
-	
+	//
+	// Xoa ban Tai ra khoi danh sach lop
 	unset($arrNewClass['tai']);
 	echo "<br/>----------------<br/>";
+	// List danh sach lop sau khi xoa ban Tai
 	listClass($arrNewClass);
 ?>
