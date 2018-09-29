@@ -11,8 +11,9 @@
 			$password = $_POST['password'];
 			$sql = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
 			mysqli_query($connect, $sql);
-
-		}
+			header("Location: list_user.php");
+			//header("Location: http://24h.com.vn");
+		}	
 	?>
 	<h1>Register form</h1>
 	<form action="#" name="Register" method="post">
