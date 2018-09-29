@@ -16,7 +16,8 @@
 			while ($row = $result->fetch_assoc()) {
 				$id = $row['id'];
 				echo $row['id'].' - '.$row['username'].' - '.$row['password'];
-				echo " <a href='delete.php?id=$id'>DELETE</a>";
+				echo " <a href='edit.php?id=$id'>EDIT</a>";
+				echo " | <a href='delete.php?id=$id'>DELETE</a>";
 				echo "<br>";
 			}
 		} else {
