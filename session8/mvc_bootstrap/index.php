@@ -1,6 +1,6 @@
-  <?php 
-  include 'controller/controller.php';
-  include 'common/header.php';?>
+<?php include 'common/header.php';
+include 'controller/controller.php';
+?>
   <!-- Left side column. contains the logo and sidebar -->
  
   <?php include 'common/sidebar.php';?>

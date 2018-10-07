@@ -14,6 +14,7 @@
 						$password = $_POST['password'];
 						$userModel = new User();
 						$userModel->InsertUser($name, $username, $password);
+						header("Location: index.php?action=list_user");
 					}
 					include 'view/add_user.php';
 					break;
@@ -44,6 +45,7 @@
 						$username = $_POST['username'];
 						$userModel = new User();
 						$userModel->EditUser($id, $name, $username);
+						header("Location: index.php?action=list_user");
 					}
 					include 'view/edit_user.php';
 					break;		

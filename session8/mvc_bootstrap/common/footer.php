@@ -27,11 +27,5 @@
 <script src="js/jquery-jvectormap-world-mill-en.js"></script>
 <!-- SlimScroll -->
 <script src="js/jquery.slimscroll.min.js"></script>
-<!-- ChartJS -->
-<script src="js/Chart.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="js/dashboard2.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="js/demo.js"></script>
 </body>
 </html>
