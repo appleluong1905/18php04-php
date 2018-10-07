@@ -24,5 +24,11 @@
 			$sql = "UPDATE users SET name = '$name', username = '$username' WHERE id = $id";
 			return mysqli_query($this->conn, $sql);
 		}
+		function checkLogin($username, $password) {
+			$sql = "SELECT * FROM users WHERE username = '$username'
+			AND password = '$password'";
+			$result = mysqli_query($this->conn, $sql);
+			return $result->num_rows;
+		}
 	}
 ?>
