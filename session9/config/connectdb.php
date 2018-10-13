@@ -1,9 +1,5 @@
 <?php 
 	class ConnectDB {
-		public $conn;
-		function __construct(){
-			$this->connect();
-		}
 		function connect(){
 			$server = 'localhost'; //$server = '127.0.0.1';
 			$username = 'root';

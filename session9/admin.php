@@ -1,7 +1,7 @@
 <?php 
 session_start();
 include 'common/header.php';
-include 'controller/controller.php';
+include 'controller/backend_controller.php';
 ?>
   <!-- Left side column. contains the logo and sidebar -->
  
@@ -23,8 +23,8 @@ include 'controller/controller.php';
     <!-- Main content -->
     <section class="content">
       <!-- Info boxes -->
-         <?php 
-          $controller = new Controller();
+        <?php 
+          $controller = new BackendController();
           $controller->handleRequest();
         ?>
       <!-- /.row -->

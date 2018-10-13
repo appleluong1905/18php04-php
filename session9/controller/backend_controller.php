@@ -1,6 +1,8 @@
 <?php 
+	include 'config/connectdb.php';
 	include 'model/user.php';
-	class Controller {
+	include 'model/product.php';
+	class BackendController {
 		/*
 			* Kiem tra request tu view
 		*/
@@ -19,7 +21,7 @@
 						$userModel->InsertUser($name, $username, $password);
 						header("Location: admin.php?action=list_user");
 					}
-					include 'view/add_user.php';
+					include 'view/backend/add_user.php';
 					break;
 				case 'list_user':
 					if(!isset($_SESSION['login'])){
@@ -28,7 +30,7 @@
 					$userModel = new User();
 					$listUser =$userModel->getListUser();
 					//view du lieu
-					include 'view/list_user.php';
+					include 'view/backend/list_user.php';
 					break;
 				case 'delete_user':
 					if(!isset($_SESSION['login'])){
@@ -59,15 +61,15 @@
 						$userModel->EditUser($id, $name, $username);
 						header("Location: admin.php?action=list_user");
 					}
-					include 'view/edit_user.php';
+					include 'view/backend/edit_user.php';
 					break;		
 				case 'add_product':
 					//view du lieu
-					include 'view/add_product.php';
+					include 'view/backend/add_product.php';
 					break;
 				case 'list_product':
 					//view du lieu
-					include 'view/list_product.php';
+					include 'view/backend/list_product.php';
 					break;
 				case 'login':
 					//view du lieu
