@@ -9,5 +9,11 @@
 			$sql = "INSERT INTO products (name, price, image) VALUES ('$name', '$price', '$image')";
 			return mysqli_query($this->conn, $sql);
 		}
+		//funtion frontend
+		function getListProduct() {
+			$sql = "SELECT * FROM products";
+			$result = mysqli_query($this->conn, $sql);
+			return $result;
+		}
 	}
 ?>
