@@ -68,15 +68,19 @@
 					if(!isset($_SESSION['login'])){
 						header("Location: login.php");
 					}
+					// Lay danh muc san pham ra
+					$productModel = new Product();
+					$category = $productModel->getListCategory();
 					if(isset($_POST['add_product'])) {
-						$name     = $_POST['name'];
-						$price    = $_POST['price'];
+						$name                = $_POST['name'];
+						$price               = $_POST['price'];
+						$product_category_id = $_POST['product_category_id'];
 						$image = $_FILES['image'];
 						$path = 'dist/img/';
 						$imageName = uniqid().$image['name'];
 						move_uploaded_file($image['tmp_name'], $path.$imageName);
 						$productModel = new Product();
-						$productModel->InsertProduct($name, $price, $imageName);
+						$productModel->InsertProduct($name, $price, $imageName, $product_category_id);
 						header("Location: admin.php?action=list_product");
 					}
 					//view du lieu
@@ -107,7 +111,6 @@
 					if(!isset($_SESSION['login'])){
 						header("Location: login.php");
 					}
-
 					// Lay duoc ID cua san pham can EDIT
 					$id = $_GET['id'];
 
@@ -115,10 +118,14 @@
 					$productModel = new Product();
 					$productEdit = $productModel->getProductInfo($id);
 					while ($row = $productEdit->fetch_assoc()) {
-						$nameEdit  = $row['name'];
-						$priceEdit = $row['price'];
-						$imageEdit = $row['image'];
+						$nameEdit            = $row['name'];
+						$priceEdit           = $row['price'];
+						$imageEdit           = $row['image'];
+						$product_category_id = $row['product_category_id'];
 					}
+										// Lay danh muc san pham ra
+					$productModel = new Product();
+					$category = $productModel->getListCategory($product_category_id);
 					// ket thuc viec lay thong tin theo ID
 
 
@@ -127,6 +134,7 @@
 						// Lay duoc thong tin submit len!
 						$name      = $_POST['name'];
 						$price     = $_POST['price'];
+						$product_category_id     = $_POST['product_category_id'];
 						// Truoc mat, lay anh cu de luu
 						$imageName = $imageEdit;
 						//upload image
@@ -142,7 +150,7 @@
 						}
 						//end upload image
 						$productModel = new Product();
-						$productModel->EditProduct($id, $name, $price, $imageName);
+						$productModel->EditProduct($id, $name, $price, $imageName, $product_category_id);
 						header("Location: admin.php?action=list_product");
 					}
 

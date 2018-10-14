@@ -20,6 +20,12 @@
                   <input type="text" class="form-control" placeholder="Enter name" name="name" value="<?php echo $nameEdit;?>">
                 </div>
                 <div class="form-group">
+                  <label>Category</label>
+                  <select class="form-control" name="product_category_id">
+                    <?php echo $category;?>
+                  </select>
+                </div>
+                <div class="form-group">
                   <label for="exampleInputUsername">Price</label>
                   <input type="text" class="form-control" placeholder="Enter price" name="price" value="<?php echo $priceEdit;?>">
                 </div>

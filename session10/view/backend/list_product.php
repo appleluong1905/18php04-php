@@ -16,6 +16,7 @@
                   <th style="width: 10px">ID</th>
                   <th>Name</th>
                   <th>Price</th>
+                  <th>Category</th>
                   <th>Image</th>
                   <th style="width: 40px">Action</th>
                 </tr>
@@ -27,6 +28,7 @@
                     <td><?php echo $row['id']?></td>
                     <td><?php echo $row['name']?></td>
                     <td><?php echo $row['price']?></td>
+                    <td><?php echo $row['category_name']?></td>
                     <td><img src="dist/img/<?php echo $image;?>"></td>
                     <td>
                     <a href="admin.php?action=edit_product&id=<?php echo $id;?>"><button type="button" class="btn btn-block btn-info">EDIT</button></a> 

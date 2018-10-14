@@ -15,6 +15,12 @@
                   <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Product Name" name="name">
                 </div>
                 <div class="form-group">
+                  <label>Category</label>
+                  <select class="form-control" name="product_category_id">
+                    <?php echo $category;?>
+                  </select>
+                </div>
+                <div class="form-group">
                   <label for="exampleInputPassword1">Price</label>
                   <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Price" name="price">
                 </div>

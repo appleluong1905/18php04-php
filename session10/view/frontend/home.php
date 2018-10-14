@@ -22,7 +22,7 @@
 									<?php echo $row['name']?>
 								</a>
 								<a href="#">
-									<span>Product Category</span>
+									<span><?php echo $row['category_name']?></span>
 								</a>                            
 
 							</h5>
