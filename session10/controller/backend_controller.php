@@ -83,8 +83,23 @@
 					include 'view/backend/add_product.php';
 					break;
 				case 'list_product':
+					if(!isset($_SESSION['login'])){
+						header("Location: login.php");
+					}
+					$productModel = new Product();
+					$listProduct =$productModel->getListProductAdmin();
 					//view du lieu
 					include 'view/backend/list_product.php';
+					break;
+				case 'delete_product':
+					if(!isset($_SESSION['login'])){
+						header("Location: login.php");
+					}
+					$id = $_GET['id'];
+					$productModel = new Product();
+					$productModel->deleteProduct($id);
+					//view du lieu
+					header("Location: admin.php?action=list_product");
 					break;
 				case 'login':
 					//view du lieu
