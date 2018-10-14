@@ -102,10 +102,16 @@
 					header("Location: admin.php?action=list_product");
 					break;
 				case 'edit_product':
+					// kiem tra neu chua DANG NHAP thi khong cho vao trang nay
+					// bat buoc quay lai trang login
 					if(!isset($_SESSION['login'])){
 						header("Location: login.php");
 					}
+
+					// Lay duoc ID cua san pham can EDIT
 					$id = $_GET['id'];
+
+					// Lay tat ca thong tin cua san pham can EDIT ra theo ID
 					$productModel = new Product();
 					$productEdit = $productModel->getProductInfo($id);
 					while ($row = $productEdit->fetch_assoc()) {
@@ -113,11 +119,19 @@
 						$priceEdit = $row['price'];
 						$imageEdit = $row['image'];
 					}
+					// ket thuc viec lay thong tin theo ID
+
+
+					// Kiem tra da submit de EDIT san pham chua?
 					if(isset($_POST['edit_product'])) {
-						$name     = $_POST['name'];
-						$price    = $_POST['price'];
+						// Lay duoc thong tin submit len!
+						$name      = $_POST['name'];
+						$price     = $_POST['price'];
+						// Truoc mat, lay anh cu de luu
 						$imageName = $imageEdit;
 						//upload image
+						// Kiem tra co chon anh de EDIT hay khong?
+						//var_dump($_FILES['image']);exit();
 						if(!$_FILES['image']['error']){
 							$image = $_FILES['image'];
 							$path = 'dist/img/';
@@ -131,6 +145,8 @@
 						$productModel->EditProduct($id, $name, $price, $imageName);
 						header("Location: admin.php?action=list_product");
 					}
+
+					// Day la view hien thi EDIT
 					include 'view/backend/edit_product.php';
 					break;	
 				case 'login':
