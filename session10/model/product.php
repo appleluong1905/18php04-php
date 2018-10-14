@@ -10,9 +10,15 @@
 			return mysqli_query($this->conn, $sql);
 		}
 		//funtion frontend
-		function getListProduct() {
-			$sql = "SELECT products.id, products.name, products.price, products.image, product_categories.name AS category_name  FROM products INNER JOIN product_categories ON 
-			products.product_category_id = product_categories.id";
+		function getListProduct($category_id) {
+			if ($category_id != ''){
+				$sql = "SELECT products.id, products.name, products.price, products.image, product_categories.name AS category_name  FROM products INNER JOIN product_categories ON 
+				products.product_category_id = product_categories.id WHERE product_category_id = $category_id";
+			} else {
+				$sql = "SELECT products.id, products.name, products.price, products.image, product_categories.name AS category_name  FROM products INNER JOIN product_categories ON 
+				products.product_category_id = product_categories.id";
+			}
+			
 			$result = mysqli_query($this->conn, $sql);
 			return $result;
 		}
