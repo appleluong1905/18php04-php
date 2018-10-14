@@ -25,5 +25,14 @@
 			return mysqli_query($this->conn, $sql);
 
 		}
+		function getProductInfo($id) {
+			$sql = "SELECT * FROM products WHERE id = $id";
+			$result = mysqli_query($this->conn, $sql);
+			return $result;
+		}
+		function EditProduct($id, $name, $price, $image){
+			$sql = "UPDATE products SET name = '$name', price = '$price', image = '$image' WHERE id = $id";
+			return mysqli_query($this->conn, $sql);
+		}
 	}
 ?>

@@ -101,6 +101,38 @@
 					//view du lieu
 					header("Location: admin.php?action=list_product");
 					break;
+				case 'edit_product':
+					if(!isset($_SESSION['login'])){
+						header("Location: login.php");
+					}
+					$id = $_GET['id'];
+					$productModel = new Product();
+					$productEdit = $productModel->getProductInfo($id);
+					while ($row = $productEdit->fetch_assoc()) {
+						$nameEdit  = $row['name'];
+						$priceEdit = $row['price'];
+						$imageEdit = $row['image'];
+					}
+					if(isset($_POST['edit_product'])) {
+						$name     = $_POST['name'];
+						$price    = $_POST['price'];
+						$imageName = $imageEdit;
+						//upload image
+						if(!$_FILES['image']['error']){
+							$image = $_FILES['image'];
+							$path = 'dist/img/';
+							$imageName = uniqid().$image['name'];
+							move_uploaded_file($image['tmp_name'], $path.$imageName);
+							//delete old image
+							unlink('dist/img/'.$imageEdit);
+						}
+						//end upload image
+						$productModel = new Product();
+						$productModel->EditProduct($id, $name, $price, $imageName);
+						header("Location: admin.php?action=list_product");
+					}
+					include 'view/backend/edit_product.php';
+					break;	
 				case 'login':
 					//view du lieu
 					if (isset($_POST['login'])) {
