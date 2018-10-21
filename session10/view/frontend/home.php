@@ -18,7 +18,7 @@
 					<div class="col-md-7 col-sm-12 col-xs-12">
 					<div class="product-deatil">
 							<h5 class="name">
-								<a href="#">
+								<a href="index.php?action=product_detail&id=<?php echo $row['id']?>">
 									<?php echo $row['name']?>
 								</a>
 								<a href="#">

@@ -75,10 +75,7 @@
 						$name                = $_POST['name'];
 						$price               = $_POST['price'];
 						$product_category_id = $_POST['product_category_id'];
-						$image = $_FILES['image'];
-						$path = 'dist/img/';
-						$imageName = uniqid().$image['name'];
-						move_uploaded_file($image['tmp_name'], $path.$imageName);
+						$imageName = $this->uploadImage($_FILES['image']);
 						$productModel = new Product();
 						$productModel->InsertProduct($name, $price, $imageName, $product_category_id);
 						header("Location: admin.php?action=list_product");
@@ -87,9 +84,7 @@
 					include 'view/backend/add_product.php';
 					break;
 				case 'list_product':
-					if(!isset($_SESSION['login'])){
-						header("Location: login.php");
-					}
+					$this->checkLogin();
 					$productModel = new Product();
 					$listProduct =$productModel->getListProductAdmin();
 					//view du lieu
@@ -186,6 +181,18 @@
 					break;
 			}
 
+		}
+		function uploadImage($imageUpload){
+			$image = $imageUpload;
+			$path = 'dist/img/';
+			$imageName = uniqid().$image['name'];
+			move_uploaded_file($image['tmp_name'], $path.$imageName);
+			return $imageName;
+		}
+		function checkLogin(){
+			if(!isset($_SESSION['login'])){
+				header("Location: login.php");
+			}
 		}
 	}
 ?>
