@@ -1,8 +1,10 @@
 
 <div class="container">
-<?php while ($row = $listProduct->fetch_assoc()) {
-      $id = $row['id'];
-?>
+<?php 
+if(count($listProduct)){
+	while ($row = $listProduct->fetch_assoc()) {
+	      $id = $row['id'];
+	?>
 	<div class="col-xs-12 col-md-6">
 		<!-- First product box start here-->
 		<div class="prod-info-main prod-wrap clearfix">
@@ -47,5 +49,6 @@
 		</div>
 		<!-- end product -->
 	</div>
-<?php }?>
+<?php }
+}?>
 </div>

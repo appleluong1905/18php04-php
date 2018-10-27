@@ -9,7 +9,7 @@
 				case 'home':
 					$category_id = isset($_GET['category_id'])?$_GET['category_id']:'';
 					$productModel = new Product();
-					$listProduct =$productModel->getListProduct($category_id);
+					$listProduct = $productModel->getListProduct($category_id);
 					// $newsModel = new News();
 					// $listNews =$newsModel->getListNews($category_id);
 					
