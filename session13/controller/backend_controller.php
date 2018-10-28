@@ -27,7 +27,7 @@
 					break;
 				case 'list_user':
 					$page = isset($_GET['page'])?$_GET['page']:1;
-					$limit = 2;
+					$limit = 3;
 					if(!isset($_SESSION['login']) || $_SESSION['role'] != 'admin'){
 						header("Location: login.php");
 					}
